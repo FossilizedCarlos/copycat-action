@@ -140,8 +140,8 @@ if [ "$CLEAN" = "true" ]; then
     fi
 fi
 
-mkdir -p "${DST_REPO_DIR}/${DST_PATH%/*}" || exit "$?"
-cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}" || exit "$?"
+mkdir -p "${DST_REPO_DIR}/docs" || exit "$?"
+cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/docs/" || exit "$?"
 cd "${DST_REPO_DIR}" || exit "$?"
 
 if [[ -z "${COMMIT_MESSAGE}" ]]; then
