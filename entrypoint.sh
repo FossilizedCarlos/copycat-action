@@ -134,14 +134,14 @@ if [ "$CLEAN" = "true" ]; then
     if [ -f "${DST_REPO_DIR}/" ] ; then
         find "${DST_REPO_DIR}/" -type f -not -path '*/\.git/*' -delete
     elif [ -d "${DST_REPO_DIR}/" ] ; then
-        find "${DST_REPO_DIR}"/* -type f -not -path '*/\.git/*' -delete
+        find "${DST_REPO_DIR}/*" -type f -not -path '*/\.git/*' -delete
     else
         echo >&2 "Nothing to clean 🧽"
     fi
 fi
 
 mkdir -p "${DST_REPO_DIR}" || exit "$?"
-cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}" || exit "$?"
+cp -rf "${FINAL_SOURCE}/${SRC_PATH}/*" "${DST_REPO_DIR}" || exit "$?"
 cd "${DST_REPO_DIR}" || exit "$?"
 
 if [[ -z "${COMMIT_MESSAGE}" ]]; then
