@@ -108,7 +108,7 @@ if [[ -n "$FILTER" ]]; then
             [[ "$f" == $EXCLUDE ]] && continue
         fi
         file_dir=$(dirname "${f}")
-        mkdir -p "${tmp_dir}/${SRC_REPO_NAME}/${file_dir}" && cp "${f}" "${tmp_dir}/${SRC_REPO_NAME}/${file_dir}"
+        mkdir -p "${tmp_dir}/${SRC_REPO_NAME}" && cp "${f}" "${tmp_dir}/${SRC_REPO_NAME}"
     done
     IFS=$SAVEIFS
     cd ..
@@ -140,8 +140,8 @@ if [ "$CLEAN" = "true" ]; then
     fi
 fi
 
-mkdir -p "${DST_REPO_DIR}/docs" || exit "$?"
-cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/docs/" || exit "$?"
+mkdir -p "${DST_REPO_DIR}" || exit "$?"
+cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}" || exit "$?"
 cd "${DST_REPO_DIR}" || exit "$?"
 
 if [[ -z "${COMMIT_MESSAGE}" ]]; then
